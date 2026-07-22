@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (!res.ok) throw new Error("Could not submit your answers. Please try again.");
 
             const result = await res.json();
-			console.log("submit result..",result);
             sessionStorage.setItem("quizResult", JSON.stringify(result));
             window.location.href = "result.html";
         } catch (err) {
@@ -128,7 +127,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const res = await fetch(`${API_BASE_URL}/quiz/questions`);
         if (!res.ok) throw new Error("Could not load the quiz. Please try again shortly.");
         questions = await res.json();
-		console.log("questions ", questions);
 
         if (!questions.length) {
             showError("No questions are set up yet.");

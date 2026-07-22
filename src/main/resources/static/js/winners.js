@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const res = await fetch(`${API_BASE_URL}/leaderboard/top3`);
             if (!res.ok) throw new Error("Couldn't load the leaderboard.");
             const top3 = await res.json();	
-			console.log("top3 ", top3);
             renderPodium(top3);
         } catch (err) {
             loadingState.classList.add("hidden");
