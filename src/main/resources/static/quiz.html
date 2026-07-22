@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" type="image/x-icon" href="payilagam-logo.png">
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span><span>Live Quiz - Open Source</span></div>
+
+    <div class="card">
+      <div id="loadingState" class="status-msg">Loading questions…</div>
+
+      <div id="quizState" class="hidden">
+        <div class="progress-row">
+          <span class="progress-label" id="progressLabel">QUESTION 1 / 10</span>
+          <span class="timer" id="timer">00:00</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+        </div>
+
+        <h2 class="question-text" id="questionText"></h2>
+        <div class="options" id="optionsContainer"></div>
+
+        <button class="btn btn-primary" id="nextBtn" disabled>Next →</button>
+      </div>
+
+      <div id="errorState" class="status-msg hidden"></div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>

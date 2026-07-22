@@ -1,0 +1,5 @@
+target/classes/com/
+*.log
+.idea/
+.vscode/
+/target/

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Winners — Top 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" type="image/x-icon" href="payilagam-logo.png">
+<style>
+  /* Extra styling specific to the big-screen winners display */
+  body { padding-top: 56px; }
+  .winners-wrap { max-width: 780px; }
+  .winners-heading {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .winners-heading h1 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 56px);
+    margin: 0;
+    background: linear-gradient(135deg, var(--gold-bright), var(--teal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .winners-heading p {
+    color: var(--text-mid);
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .big-podium {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 22px;
+    margin: 10px 0 20px;
+  }
+  .big-slot { flex: 1; max-width: 220px; text-align: center; }
+  .medal { font-size: 34px; margin-bottom: 6px; }
+  .big-block {
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 14px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 30px;
+    color: #241705;
+  }
+  .big-slot.first .big-block { height: 190px; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); box-shadow: 0 20px 50px -20px rgba(242,181,68,0.7); }
+  .big-slot.second .big-block { height: 140px; background: linear-gradient(180deg, #e4e8fb, #aeb5da); }
+  .big-slot.third .big-block { height: 105px; background: linear-gradient(180deg, #eab27c, #c07f45); }
+
+  .big-name {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    margin-top: 14px;
+    color: var(--text-hi);
+  }
+  .big-meta {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-mid);
+    margin-top: 4px;
+  }
+
+  .refresh-note {
+    text-align: center;
+    color: var(--text-lo);
+    font-size: 12.5px;
+    margin-top: 30px;
+  }
+  .live-dot {
+    display: inline-block;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--teal);
+    margin-right: 6px;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  
+ 
+.hidden-blur {
+    opacity: 0;
+    filter: blur(20px);
+    transition: filter 15s ease, opacity 5s ease;
+}
+.reveal-winner {
+    opacity: 1;
+    filter: blur(0px);
+}
+
+</style>
+</head>
+<body>
+  <div class="wrap winners-wrap">
+    <div class="winners-heading">
+      <h1>🏆 Top 3 Winners</h1>
+      <p>Ranked by highest score — ties broken by fastest completion time</p>
+    </div>
+
+    <div id="loadingState" class="status-msg">Loading winners…</div>
+    <div id="errorState" class="status-msg hidden"></div>
+
+    <div id="bigPodium" class="big-podium hidden hidden-blur"></div>
+
+    <div id="emptyState" class="status-msg hidden">No one has finished the quiz yet — the podium fills in as scores come in.</div>
+
+    <p class="refresh-note"><span class="live-dot"></span>Auto-refreshing every 10 seconds</p>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/winners.js"></script>
+  <script type="text/javascript">
+	  const delayTime = 1000; 
+	  setTimeout(() => {
+	      const winnerCard = document.getElementById("bigPodium");
+	      winnerCard.classList.add("reveal-winner");
+	  }, delayTime);
+</script>
+</body>
+</html>

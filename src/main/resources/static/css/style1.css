@@ -1,0 +1,350 @@
+/* ============================================================
+   Quiz App — Design tokens
+   Palette: deep indigo stage + brass/gold spotlight + teal accent
+   Type: condensed display for numbers/scores, clean sans for body
+   ============================================================ */
+:root {
+  --stage-950: #0b1030;
+  --stage-900: #121a45;
+  --stage-800: #1b2560;
+  --stage-700: #29357a;
+  --card: #161d4a;
+  --line: rgba(255, 255, 255, 0.10);
+
+  --gold: #f2b544;
+  --gold-bright: #ffd166;
+  --teal: #38d9c9;
+  --coral: #ff6b6b;
+
+  --text-hi: #f6f4ff;
+  --text-mid: #b9c0e8;
+  --text-lo: #7c84b8;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-hi);
+  background:
+    radial-gradient(circle at 20% -10%, rgba(242, 181, 68, 0.14), transparent 45%),
+    radial-gradient(circle at 100% 0%, rgba(56, 217, 201, 0.12), transparent 40%),
+    linear-gradient(180deg, var(--stage-950), var(--stage-900) 60%, var(--stage-950));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 60px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ---------- Header / brand mark ---------- */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.brand .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gold-bright);
+  box-shadow: 0 0 14px 2px rgba(255, 209, 102, 0.7);
+}
+.brand span {
+  font-family: var(--font-mono);
+  letter-spacing: 0.22em;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: linear-gradient(180deg, var(--card), var(--stage-800));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: 0 30px 60px -25px rgba(0, 0, 0, 0.6);
+}
+
+h1.title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 5vw, 36px);
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+p.subtitle {
+  color: var(--text-mid);
+  margin: 0 0 28px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ---------- Form ---------- */
+.field {
+  margin-bottom: 18px;
+}
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-mid);
+  margin-bottom: 7px;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 13px 14px;
+  color: var(--text-hi);
+  font-family: var(--font-body);
+  font-size: 15px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.field textarea { resize: vertical; min-height: 70px; }
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(242, 181, 68, 0.06);
+}
+.field .error {
+  color: var(--coral);
+  font-size: 12.5px;
+  margin-top: 6px;
+  min-height: 15px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15.5px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+  color: #241705;
+  box-shadow: 0 12px 24px -10px rgba(242, 181, 68, 0.6);
+}
+.btn-primary:hover { transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+}
+
+/* ---------- Quiz progress ---------- */
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.progress-label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-mid);
+  letter-spacing: 0.06em;
+}
+.timer {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--teal);
+}
+.progress-track {
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  margin-bottom: 26px;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), var(--gold-bright));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* ---------- Question / options ---------- */
+.question-text {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 4vw, 24px);
+  line-height: 1.35;
+  margin: 0 0 24px;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  text-align: left;
+}
+.option:hover { border-color: rgba(242, 181, 68, 0.5); }
+.option .letter {
+  width: 30px; height: 30px;
+  min-width: 30px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-mid);
+}
+.option.selected {
+  border-color: var(--gold);
+  background: rgba(242, 181, 68, 0.10);
+}
+.option.selected .letter {
+  background: var(--gold);
+  color: #241705;
+}
+.option span.text { font-size: 15px; color: var(--text-hi); }
+
+/* ---------- Podium / leaderboard ---------- */
+.podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 14px;
+  margin: 30px 0 8px;
+}
+.podium-slot {
+  flex: 1;
+  text-align: center;
+}
+.podium-block {
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: #241705;
+}
+.podium-slot.first .podium-block { height: 120px; background: linear-gradient(180deg, var(--gold-bright), var(--gold)); }
+.podium-slot.second .podium-block { height: 90px; background: linear-gradient(180deg, #d8dcf0, #a9b0d6); }
+.podium-slot.third .podium-block { height: 68px; background: linear-gradient(180deg, #e3a26b, #c07f45); }
+.podium-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  margin-top: 10px;
+  color: var(--text-hi);
+  word-break: break-word;
+}
+.podium-score {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-mid);
+  margin-top: 2px;
+}
+
+.result-hero {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.result-score {
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 1;
+  color: var(--gold-bright);
+  margin: 4px 0;
+}
+.result-caption {
+  color: var(--text-mid);
+  font-size: 14px;
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+}
+.leaderboard-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14.5px;
+}
+.leaderboard-list li:last-child { border-bottom: none; }
+.leaderboard-list .rank-badge {
+  font-family: var(--font-mono);
+  width: 24px;
+  color: var(--text-lo);
+}
+.leaderboard-list .lb-name { flex: 1; color: var(--text-hi); }
+.leaderboard-list .lb-score { font-family: var(--font-mono); color: var(--teal); }
+
+/* ---------- Misc ---------- */
+.center { text-align: center; }
+.status-msg {
+  text-align: center;
+  color: var(--text-mid);
+  font-size: 14px;
+  padding: 40px 0;
+}
+.hidden { display: none !important; }
+
+.footer-note {
+  text-align: center;
+  color: var(--text-lo);
+  font-size: 12px;
+  margin-top: 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

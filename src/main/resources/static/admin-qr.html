@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Generate Quiz QR Code</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" type="image/x-icon" href="payilagam-logo.png">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span><span>Payilagam</span></div>
+
+    <div class="card">
+      <h1 class="title" style="font-size: 24px;">Generate the entry QR code</h1>
+      <p class="subtitle">
+        Enter the public URL where <code>index.html</code> (the registration page) is hosted.
+        This is what attendees will scan.
+      </p>
+
+      <div class="field">
+        <label for="targetUrl">Registration page URL</label>
+        <input type="text" id="targetUrl" placeholder="https://your-domain.com/index.html" />
+      </div>
+
+      <button class="btn btn-primary" id="generateBtn">Generate QR code</button>
+
+      <div id="qrHolder" class="center" style="margin-top: 28px;"></div>
+      <p class="footer-note" id="urlEcho"></p>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById("targetUrl");
+    const holder = document.getElementById("qrHolder");
+    const echo = document.getElementById("urlEcho");
+    const btn = document.getElementById("generateBtn");
+
+    // Default to wherever index.html would sit relative to this page.
+    input.value = new URL("index.html", window.location.href).toString();
+
+    function generate() {
+      const url = input.value.trim();
+      if (!url) return;
+      holder.innerHTML = "";
+      new QRCode(holder, {
+        text: url,
+        width: 220,
+        height: 220,
+        colorDark: "#0b1030",
+        colorLight: "#ffffff",
+      });
+      echo.textContent = url;
+    }
+
+    btn.addEventListener("click", generate);
+    generate();
+  </script>
+</body>
+</html>

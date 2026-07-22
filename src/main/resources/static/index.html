@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Join the Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" type="image/x-icon" href="payilagam-logo.png">
+</head>
+<body>
+	<div class="wrap">
+		<div class="brand">
+			<span class="dot"></span><span>Live Quiz - Open Source</span>
+		</div>
+
+		<div class="card">
+			<h1 class="title">
+				You scanned it.<br />Now let's get you in.
+			</h1>
+			<p class="subtitle">Fill in your details to start the quiz. Only
+				takes a few seconds.</p>
+
+			<form id="registerForm" novalidate>
+				<div class="field">
+					<label for="name">Full name</label> <input type="text" id="name"
+						name="name" placeholder="e.g. Dhanush Pavadai" />
+					<div class="error" id="nameError"></div>
+				</div>
+
+				<div class="field">
+					<label for="email">Email address</label> <input type="email"
+						id="email" name="email" placeholder="you@example.com" />
+					<div class="error" id="emailError"></div>
+				</div>
+
+				<!-- <div class="field">
+          <label for="address">Address</label>
+          <textarea id="address" name="address" placeholder="Area, city"></textarea>
+          <div class="error" id="addressError"></div>
+        </div> -->
+
+				<div class="error center" id="formError"
+					style="margin-bottom: 14px;"></div>
+
+				<button type="submit" class="btn btn-primary" id="submitBtn">Start
+					the quiz →</button>
+			</form>
+		</div>
+
+		<p class="footer-note">Your details are only used to show your
+			name on the leaderboard.</p>
+	</div>
+
+	<script src="js/config.js"></script>
+	<script src="js/register.js"></script>
+</body>
+</html>
